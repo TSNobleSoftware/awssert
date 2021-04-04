@@ -1,4 +1,4 @@
-from awssert.keywords import keywords
+from awssert.keywords import keywords, ALL_KEYWORDS
 from awssert.core import KeywordRouter, BotoObjectProxyRegister, BotoObjectProxy
 
 
@@ -14,4 +14,5 @@ def register_s3_assertions(class_attributes, base_classes, **kwargs):
     proxy = BotoObjectProxy()
     base_classes.insert(0, BotoObjectProxyRegister)
     class_attributes['proxy'] = proxy
-    class_attributes['should'] = KeywordRouter("should", BucketAssertions(), proxy)
+    for keyword in ALL_KEYWORDS:
+        class_attributes[keyword] = KeywordRouter(keyword, BucketAssertions(), proxy)

@@ -15,3 +15,4 @@ def test_s3_bucket_contains_object_assertion(mock_s3, awssert):
     bucket.create(CreateBucketConfiguration={"LocationConstraint": "eu-west-1"})
     bucket.put_object(Key="foo", Body=b"123")
     bucket.should.contain("foo")
+    bucket.does.contain("foo")
