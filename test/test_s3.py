@@ -1,13 +1,17 @@
-from moto import mock_s3
+import pytest
+import moto
 import boto3
+from awssert.fixture import awssert
 
-import awssert
+
+@pytest.fixture
+def mock_s3():
+    with moto.mock_s3():
+        yield
 
 
-@mock_s3
-def test_s3_bucket_contains_object_assertion():
-    mock_bucket = boto3.resource("s3").Bucket("MockBucket")
-    mock_bucket.create(CreateBucketConfiguration={"LocationConstraint": "eu-west-1"})
-    mock_bucket.put_object(Key="foo", Body=b"123")
-    mock_bucket.should.contain("foo")
-    mock_bucket.should_not.contain("bar")
+def test_s3_bucket_contains_object_assertion(mock_s3, awssert):
+    bucket = boto3.resource("s3").Bucket("mock")
+    bucket.create(CreateBucketConfiguration={"LocationConstraint": "eu-west-1"})
+    bucket.put_object(Key="foo", Body=b"123")
+    bucket.should.contain("foo")
