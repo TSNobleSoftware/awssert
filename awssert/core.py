@@ -1,7 +1,7 @@
 import functools
 
-from awssert.keywords import Keywords, POSITIVE
-from awssert.exceptions import MethodDoesNotSupportKeywordError
+from awssert.prefixes import AssertionPrefixes
+from awssert.exceptions import DisallowedPrefixOnMethodError
 
 
 class BotoObjectProxyRegister(object):
@@ -15,17 +15,17 @@ class BotoObjectProxy:
         self.reference = None
 
 
-class KeywordRouter:
+class AssertionPrefixRouter:
 
-    def __init__(self, keyword, assertions_class, proxy):
-        self.keyword = keyword
+    def __init__(self, prefix, assertions_class, proxy):
+        self.prefix = prefix
         self.route_to = assertions_class
         self.proxy = proxy
         self.routable_methods = self._setup_routable_methods()
 
     def _setup_routable_methods(self):
-        routable_methods = Keywords.get_methods_allowing(
-            self.route_to.__class__, self.keyword
+        routable_methods = AssertionPrefixes.get_methods_allowing_prefix(
+            self.route_to.__class__, self.prefix
         )
         all_methods = [
             method for method in dir(self.route_to)
@@ -40,8 +40,8 @@ class KeywordRouter:
             result = getattr(self.route_to, method)(
                 self.proxy.reference, *args, **kwargs
             )
-            return result if self.keyword in POSITIVE else not result
+            return result if self.prefix in AssertionPrefixes.positive else not result
         else:
-            raise MethodDoesNotSupportKeywordError(
-                f"Method '{method}' cannot be used with keyword '{self.keyword}'"
+            raise DisallowedPrefixOnMethodError(
+                f"Method '{method}' cannot be used with prefix '{self.prefix}'"
             )

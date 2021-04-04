@@ -1,6 +1,6 @@
-class KeywordNotSupportedError(Exception):
+class PrefixNotSupportedError(Exception):
     pass
 
 
-class MethodDoesNotSupportKeywordError(Exception):
+class DisallowedPrefixOnMethodError(Exception):
     pass
