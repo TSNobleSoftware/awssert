@@ -1,0 +1,2 @@
+class UnsupportedKeywordError(Exception):
+    pass
