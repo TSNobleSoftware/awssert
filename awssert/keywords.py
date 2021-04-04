@@ -1,4 +1,4 @@
-from awssert.exceptions import UnsupportedKeywordError
+from awssert.exceptions import KeywordNotSupportedError
 
 POSITIVE = ["should", "does", "is"]
 NEGATIVE = ["shouldnt", "should_not", "doesnt", "does_not", "isnt", "is_not"]
@@ -30,7 +30,7 @@ class Keywords:
         try:
             Keywords._register[class_name][keyword][method.__name__] = method
         except KeyError:
-            raise UnsupportedKeywordError(f"Keyword '{keyword}' is not supported")
+            raise KeywordNotSupportedError(f"Keyword '{keyword}' is not supported")
 
 
 def keywords(allowed_keywords):
