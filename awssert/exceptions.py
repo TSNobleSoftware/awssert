@@ -1,2 +1,6 @@
-class UnsupportedKeywordError(Exception):
+class KeywordNotSupportedError(Exception):
+    pass
+
+
+class MethodDoesNotSupportKeywordError(Exception):
     pass
