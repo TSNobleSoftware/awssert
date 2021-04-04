@@ -1,7 +1,7 @@
 from awssert.exceptions import KeywordNotSupportedError
 
-POSITIVE = ["should", "does", "is"]
-NEGATIVE = ["shouldnt", "should_not", "doesnt", "does_not", "isnt", "is_not"]
+POSITIVE = ["should", "does", "should_be"]
+NEGATIVE = ["should_not", "does_not", "should_not_be"]
 ALL_KEYWORDS = POSITIVE + NEGATIVE
 
 

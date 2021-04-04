@@ -4,10 +4,14 @@ from awssert.core import KeywordRouter, BotoObjectProxyRegister, BotoObjectProxy
 
 class BucketAssertions:
 
-    @keywords(["should", "does"])
+    @keywords(["should", "should_not", "does", "does_not"])
     def contain(self, bucket, key):
         objects = bucket.objects.filter(Prefix=key)
-        assert any([key == object.key for object in objects])
+        return any([key == object.key for object in objects])
+
+    @keywords(["should_be", "should_not_be"])
+    def empty(self, bucket):
+        return len(list(bucket.objects.all())) == 0
 
 
 def register_s3_assertions(class_attributes, base_classes, **kwargs):

@@ -1,6 +1,6 @@
 import functools
 
-from awssert.keywords import Keywords
+from awssert.keywords import Keywords, POSITIVE
 from awssert.exceptions import MethodDoesNotSupportKeywordError
 
 
@@ -37,7 +37,10 @@ class KeywordRouter:
 
     def _route(self, method, *args, **kwargs):
         if method in self.routable_methods:
-            getattr(self.route_to, method)(self.proxy.reference, *args, **kwargs)
+            result = getattr(self.route_to, method)(
+                self.proxy.reference, *args, **kwargs
+            )
+            return result if self.keyword in POSITIVE else not result
         else:
             raise MethodDoesNotSupportKeywordError(
                 f"Method '{method}' cannot be used with keyword '{self.keyword}'"
