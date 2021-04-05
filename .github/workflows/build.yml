@@ -20,7 +20,7 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Test with pytest
         run: |
-          AWS_DEFAULT_REGION=us-east-1
+          export AWS_DEFAULT_REGION=us-east-1
           pytest --cov=awssert test/
       - name: "Upload coverage to Codecov"
         if: ${{ github.repository == 'TSNoble/awssert'}}
