@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-python@v2
       - name: Install zest
         run: pip install zest.releaser[recommended]
-      - name: Setup git user
+      - name: Set up Git user
         run: |
           git config --global user.name "ZestReleaser"
           git config --global user.email "N/A"
