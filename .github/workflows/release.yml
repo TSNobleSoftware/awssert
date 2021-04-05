@@ -4,6 +4,8 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      TWINE_REPOSITORY: awssert
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
