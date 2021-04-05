@@ -58,6 +58,18 @@ Note that AWSsert currently only works with moto usage of the fixture form, whic
 
 | AWS Service | Resource Object | AWSsert Supported |
 |-------------|-----------------|-------------------|
+|CloudFormation|Event           |:x:                |
+|             |Stack            |:x:                |
+|             |StackResource            |:x:                |
+|             |StackResourceSummary            |:x:                |
+|CloudWatch   |Alarm            |:x:                |
+|             |Metric            |:x:                |
+|Glacier             |Account            |:x:                |
+|             |Archive            |:x:                |
+|             |Job            |:x:                |
+|             |MultipartUpload            |:x:                |
+|             |Notification            |:x:                |
+|             |Vault            |:x:                |
 |S3           |Bucket           |:white_check_mark: |
 |DynamoDB     |Table            |:white_check_mark: |
 
