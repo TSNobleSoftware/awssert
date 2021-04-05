@@ -19,8 +19,8 @@ setup(
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
-        "Framework :: AWS CDK"
-        "Framework :: Pytest"
+        "Framework :: AWS CDK",
+        "Framework :: Pytest",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
