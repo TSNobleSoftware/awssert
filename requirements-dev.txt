@@ -1,7 +1,3 @@
--r requirements.txt
-pytest
-pytest-cov
-moto
+-r requirements-test.txt
 black
-coverage
 flake8
