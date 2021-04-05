@@ -1,3 +1,4 @@
 import pkg_resources
 
-__version__ = pkg_resources.get_distribution("awssert").version
+# TODO: Fix pkg_resources.DistributionNotFound error when running through Github Actions
+# __version__ = pkg_resources.get_distribution("awssert").version
