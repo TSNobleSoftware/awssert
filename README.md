@@ -16,7 +16,7 @@ pip install awssert
 
 ## Usage
 
-AWSsert attaches assertions directly to boto3's resource objects, allowing you to write clean and declarative tests:
+AWSsert attaches assertions directly to [boto3](https://github.com/boto/boto3) resource objects, allowing you to write clean and declarative tests:
 
 ```python
 import boto3
@@ -30,7 +30,7 @@ def test_bucket_contains_object(awssert):
    assert bucket.should_contain("bar")
 ```
 
-AWSsert also works in tandem with moto, enabling the same level of clarity to be applied on mock infrastructure:
+AWSsert also works in tandem with [moto](https://pypi.org/project/moto/), enabling the same level of clarity to be applied on mock infrastructure:
 
 ```python
 import boto3
