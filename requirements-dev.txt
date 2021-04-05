@@ -1,4 +1,4 @@
 pytest
 moto
-zest-releaser
+zest-releaser[recommended]
 black
