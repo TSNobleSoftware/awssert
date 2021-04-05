@@ -16,7 +16,6 @@ class BotoObjectProxy:
 
 
 class AssertionPrefixRouter:
-
     def __init__(self, prefix, assertions_class, proxy):
         self.prefix = prefix
         self.route_to = assertions_class
@@ -28,7 +27,8 @@ class AssertionPrefixRouter:
             self.route_to.__class__, self.prefix
         )
         all_methods = [
-            method for method in dir(self.route_to)
+            method
+            for method in dir(self.route_to)
             if callable(getattr(self.route_to, method)) and not method.startswith("__")
         ]
         for method in all_methods:

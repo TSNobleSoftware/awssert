@@ -3,7 +3,6 @@ from awssert.core import AssertionPrefixRouter, BotoObjectProxyRegister, BotoObj
 
 
 class BucketAssertions:
-
     @prefixes(["should", "should_not", "does", "does_not"])
     def contain(self, bucket, key):
         objects = bucket.objects.filter(Prefix=key)
@@ -21,7 +20,7 @@ class BucketAssertions:
 def register_s3_assertions(class_attributes, base_classes, **kwargs):
     proxy = BotoObjectProxy()
     base_classes.insert(0, BotoObjectProxyRegister)
-    class_attributes['proxy'] = proxy
+    class_attributes["proxy"] = proxy
     for prefix in AssertionPrefixes.all:
         class_attributes[prefix] = AssertionPrefixRouter(
             prefix, BucketAssertions(), proxy

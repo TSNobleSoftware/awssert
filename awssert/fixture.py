@@ -9,8 +9,8 @@ from awssert.dynamodb import register_dynamodb_assertions
 def awssert():
     default_session = boto3._get_default_session()
     default_session.events.register(
-        'creating-resource-class.s3.Bucket', register_s3_assertions
+        "creating-resource-class.s3.Bucket", register_s3_assertions
     )
     default_session.events.register(
-        'creating-resource-class.dynamodb.Table', register_dynamodb_assertions
+        "creating-resource-class.dynamodb.Table", register_dynamodb_assertions
     )

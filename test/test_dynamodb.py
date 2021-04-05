@@ -14,7 +14,7 @@ def test_table_empty_assertion(mock_ddb, awssert):
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
-        KeySchema=[{"AttributeName": "mock", "KeyType": "HASH"}]
+        KeySchema=[{"AttributeName": "mock", "KeyType": "HASH"}],
     )
     table = boto3.resource("dynamodb").Table("mock")
     assert table.should_be.empty()
@@ -26,7 +26,7 @@ def test_table_has_item_assertion(mock_ddb, awssert):
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
-        KeySchema=[{"AttributeName": "mock", "KeyType": "HASH"}]
+        KeySchema=[{"AttributeName": "mock", "KeyType": "HASH"}],
     )
     table = boto3.resource("dynamodb").Table("mock")
     assert table.should_not_have.item({"mock": "foo"})
@@ -42,7 +42,7 @@ def test_table_has_key_assertion(mock_ddb, awssert):
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
-        KeySchema=[{"AttributeName": "mock", "KeyType": "HASH"}]
+        KeySchema=[{"AttributeName": "mock", "KeyType": "HASH"}],
     )
     table = boto3.resource("dynamodb").Table("mock")
     assert table.should_have.key("mock")

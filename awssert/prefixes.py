@@ -6,7 +6,11 @@ class AssertionPrefixes:
     _register = {}
     positive = ["should", "does", "should_be", "should_have", "has"]
     negative = [
-        "should_not", "does_not", "does_not_have", "should_not_be", "should_not_have"
+        "should_not",
+        "does_not",
+        "does_not_have",
+        "should_not_be",
+        "should_not_have",
     ]
     all = positive + negative
 
@@ -38,4 +42,5 @@ def prefixes(allowed_prefixes):
     def registrar(method):
         AssertionPrefixes.register_method(method, allowed_prefixes)
         return method
+
     return registrar
