@@ -5,6 +5,8 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     env:
+      TWINE_USERNAME: __token__
+      TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
       TWINE_REPOSITORY: awssert
     steps:
       - uses: actions/checkout@v2
