@@ -1,2 +1,3 @@
+# If adding requirements, also add to install_requires in setup.py
 pytest
 boto3
