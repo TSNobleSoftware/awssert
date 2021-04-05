@@ -1,0 +1,18 @@
+name: Release
+on: workflow_dispatch
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Install zest
+        run: pip install zest.releaser[recommended]
+      - name: Create release version
+        run: prerelease --no-input
+      - name: Tag and release to PyPI
+        run: release --no-input
+      - name: Bump version
+        run: postrelease --no-input
