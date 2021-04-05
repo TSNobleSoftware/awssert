@@ -1,4 +1,7 @@
+-r requirements.txt
 pytest
+pytest-cov
 moto
-zest-releaser[recommended]
 black
+coverage
+flake8
