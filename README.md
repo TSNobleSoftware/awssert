@@ -1,5 +1,9 @@
 # AWSsert
 
+![PyPI](https://img.shields.io/pypi/v/awssert)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/awssert)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 AWSsert is a Python library providing declarative assertions about AWS resources to your tests.
 
 ## Installation
