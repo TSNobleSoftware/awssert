@@ -4,10 +4,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    env:
-      TWINE_USERNAME: __token__
-      TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-      TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -21,6 +17,10 @@ jobs:
       - name: Create release version
         run: prerelease --no-input
       - name: Tag and release to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+          TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
         run: release --no-input
       - name: Bump version
         run: postrelease --no-input
