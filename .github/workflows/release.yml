@@ -4,6 +4,9 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      GIT_AUTHOR_NAME: ZestReleaser
+      GIT_AUTHOR_EMAIL: N/A
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
