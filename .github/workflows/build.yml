@@ -26,6 +26,7 @@ jobs:
           flake8 awssert/ test/
   test:
     name: Unit test
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
