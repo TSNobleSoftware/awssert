@@ -55,7 +55,11 @@ def test_bucket_contains_object(mock_s3, awssert):
 Note that AWSsert currently only works with moto usage of the fixture form, which must be included in a test __before__ the awssert fixture.
 
 ## Progress
-TODO
+
+| AWS Service | Resource Object | AWSsert Supported |
+|-------------|-----------------|-------------------|
+|S3           |Bucket           |:white_check_mark: |
+|DynamoDB     |Table            |:white_check_mark: |
 
 
 ## Contributing
