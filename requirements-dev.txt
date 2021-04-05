@@ -2,4 +2,3 @@ pytest
 moto
 zest-releaser[recommended]
 black
-wheel

@@ -1,20 +1,21 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
+from pathlib import Path
+
+version = "0.0.1"
+here = Path(__file__).parent.resolve()
+
+with open(here.joinpath("README.md"), encoding="utf-8") as f:
+    long_description = f.read()
 
 setup(
     name="awssert",
-    packages=["awssert"],
-    version="0.0.1",
-    license="Apache Software License 2.0",
-    description="Declarative assertions for AWS.",
-    long_description="A testing library adding declarative assertions about boto3 resource objects.",
+    version=version,
+    description="Declarative assertions for AWS",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/TSNoble/awssert",
     author="Tom Noble",
     author_email="t.s.noble@outlook.com",
-    url="https://github.com/TSNoble/awssert",
-    keywords=["aws", "pytest", "python", "testing"],
-    install_requires=[
-        "pytest",
-        "boto3",
-    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -27,4 +28,15 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
+    keywords=["aws", "python", "pytest", "boto3", "testing"],
+    packages=find_packages(),
+    python_requires=">=3.5",
+    install_requires=[
+        "pytest",
+        "boto3",
+    ],
+    project_urls={
+        "Bug Reports": "https://github.com/TSNoble/awssert/issues",
+        "Source": "https://github.com/TSNoble/awssert",
+    }
 )
