@@ -12,8 +12,8 @@ jobs:
         run: pip install zest.releaser[recommended]
       - name: Setup git user
         run: |
-          git --global user.name "ZestReleaser"
-          git --global user.email "N/A"
+          git config --global user.name "ZestReleaser"
+          git config --global user.email "N/A"
       - name: Create release version
         run: prerelease --no-input
       - name: Tag and release to PyPI
