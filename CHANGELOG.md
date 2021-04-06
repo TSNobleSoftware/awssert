@@ -4,7 +4,7 @@
 - Nothing changed yet.
 
 
-0.0.5 (unreleased)
+0.0.5 (2021-04-06)
 ------------------
 
 ### :pencil2: Changed
