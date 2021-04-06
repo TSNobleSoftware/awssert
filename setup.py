@@ -34,6 +34,7 @@ setup(
         "pytest",
         "boto3",
     ],
+    entry_points={"pytest11": ["name_of_plugin = awssert"]},
     project_urls={
         "Bug Reports": "https://github.com/TSNoble/awssert/issues",
         "Source": "https://github.com/TSNoble/awssert",
