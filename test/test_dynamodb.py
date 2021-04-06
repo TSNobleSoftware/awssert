@@ -1,7 +1,6 @@
 import pytest
 import moto
 import boto3
-from awssert.fixture import awssert
 
 
 @pytest.fixture
@@ -10,7 +9,7 @@ def mock_ddb():
         yield
 
 
-def test_table_empty_assertion(mock_ddb, awssert):
+def test_table_empty_assertion(mock_ddb):
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
@@ -22,7 +21,7 @@ def test_table_empty_assertion(mock_ddb, awssert):
     assert table.should_not_be.empty()
 
 
-def test_table_has_item_assertion(mock_ddb, awssert):
+def test_table_has_item_assertion(mock_ddb):
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
@@ -38,7 +37,7 @@ def test_table_has_item_assertion(mock_ddb, awssert):
     assert table.does_not_have.item({"mock": "bar"})
 
 
-def test_table_has_key_assertion(mock_ddb, awssert):
+def test_table_has_key_assertion(mock_ddb):
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",

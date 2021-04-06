@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-version = "0.0.5.dev0"
+version = "0.0.6.dev0"
 here = Path(__file__).parent.resolve()
 
 with open(here.joinpath("README.md"), encoding="utf-8") as f:
@@ -34,6 +34,7 @@ setup(
         "pytest",
         "boto3",
     ],
+    entry_points={"pytest11": ["name_of_plugin = awssert"]},
     project_urls={
         "Bug Reports": "https://github.com/TSNoble/awssert/issues",
         "Source": "https://github.com/TSNoble/awssert",

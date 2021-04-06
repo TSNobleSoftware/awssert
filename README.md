@@ -22,9 +22,7 @@ AWSsert attaches assertions directly to [boto3](https://github.com/boto/boto3) r
 ```python
 import boto3
 
-from awssert.fixtures import awssert
-
-def test_bucket_contains_object(awssert):
+def test_bucket_contains_object():
    bucket = boto3.resource("s3").Bucket("foo")
    assert bucket.should_not.contain("bar")
    bucket.put_object(Key="bar", Body=b"123")
@@ -38,21 +36,19 @@ import boto3
 import moto
 import pytest
 
-from awssert.fixtures import awssert
-
 @pytest.fixture
 def mock_s3():
    with moto.mock_s3():
       yield
 
-def test_bucket_contains_object(mock_s3, awssert):
+def test_bucket_contains_object(mock_s3):
    bucket = boto3.resource("s3").Bucket("foo")
    assert bucket.should_not.contain("bar")
    bucket.put_object(Key="bar", Body=b"123")
    assert bucket.should_contain("bar")
 ```
 
-Note that AWSsert currently only works with moto usage of the fixture form, which must be included in a test __before__ the awssert fixture.
+Note that AWSsert currently does not work with usage of moto as a decorator
 
 ## Progress
 
