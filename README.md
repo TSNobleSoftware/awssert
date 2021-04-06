@@ -51,7 +51,92 @@ def test_bucket_contains_object(mock_s3):
 Note that AWSsert currently does not work with usage of moto as a decorator
 
 ## Progress
-TODO
+
+| AWS Service | Resource Object             | AWSsert Supported |
+|-------------|-----------------------------|-------------------|
+|CloudFormation|Event                       |:x:                |
+|             |Stack                        |:x:                |
+|             |StackResource                |:x:                |
+|             |StackResourceSummary         |:x:                |
+|CloudWatch   |Alarm                        |:x:                |
+|             |Metric                       |:x:                |
+|DynamoDB     |Table                        |:white_check_mark: |
+|EC2          |ClassicAddress               |:x:                |
+|             |DhcpOptions                  |:x:                |
+|             |Image                        |:x:                |
+|             |Instance                     |:x:                |
+|             |InternetGateway              |:x:                |
+|             |KeyPair                      |:x:                |
+|             |KeyPairInfo                  |:x:                |
+|             |NetworkAcl                   |:x:                |
+|             |NetworkInterface             |:x:                |
+|             |NetworkInterfaceAssociation  |:x:                |
+|             |PlacementGroup               |:x:                |
+|             |Route                        |:x:                |
+|             |RouteTable                   |:x:                |
+|             |RouteTableAssociation        |:x:                |
+|             |SecurityGroup                |:x:                |
+|             |Snapshot                     |:x:                |
+|             |Subnet                       |:x:                |
+|             |Tag                          |:x:                |
+|             |Volume                       |:x:                |
+|             |Vpc                          |:x:                |
+|             |VpcPeeringConnection         |:x:                |
+|             |VpcAddress                   |:x:                |
+|Glacier      |Account                      |:x:                |
+|             |Archive                      |:x:                |
+|             |Job                          |:x:                |
+|             |MultipartUpload              |:x:                |
+|             |Notification                 |:x:                |
+|             |Vault                        |:x:                |
+|IAM          |AccessKey                    |:x:                |
+|             |AccessKeyPair                |:x:                |
+|             |AccountPasswordPolicy        |:x:                |
+|             |AccountSummary               |:x:                |
+|             |AssumeRolePolicy             |:x:                |
+|             |CurrentUser                  |:x:                |
+|             |Group                        |:x:                |
+|             |GroupPolicy                  |:x:                |
+|             |InstanceProfile              |:x:                |
+|             |LoginProfile                 |:x:                |
+|             |MfaDevice                    |:x:                |
+|             |Policy                       |:x:                |
+|             |PolicyVersion                |:x:                |
+|             |Role                         |:x:                |
+|             |RolePolicy                   |:x:                |
+|             |SamlProvider                 |:x:                |
+|             |ServerCertificate            |:x:                |
+|             |SigningCertificate           |:x:                |
+|             |User                         |:x:                |
+|             |UserPolicy                   |:x:                |
+|             |VirtualMfaDevice             |:x:                |
+|OpsWorks     |Layer                        |:x:                |
+|             |Stack                        |:x:                |
+|             |StackSummary                 |:x:                |
+|S3           |Bucket                       |:white_check_mark: |
+|             |BucketAcl                    |:x:                |
+|             |BucketCors                   |:x:                |
+|             |BucketLifecycle              |:x:                |
+|             |BucketLifecycleConfiguration |:x:                |
+|             |BucketLogging                |:x:                |
+|             |BucketNotification           |:x:                |
+|             |BucketPolicy                 |:x:                |
+|             |BucketRequestPayment         |:x:                |
+|             |BucketTagging                |:x:                |
+|             |BucketVersioning             |:x:                |
+|             |BucketWebsite                |:x:                |
+|             |MultipartUpload              |:x:                |
+|             |MultipartUploadPart          |:x:                |
+|             |Object                       |:x:                |
+|             |ObjectAcl                    |:x:                |
+|             |ObjectSummary                |:x:                |
+|             |ObjectVersion                |:x:                |
+|SNS          |PlatformApplication          |:x:                |
+|             |PlatformEndpoint             |:x:                |
+|             |Subscription                 |:x:                |
+|             |Topic                        |:x:                |
+|SQS          |Message                      |:x:                |
+|             |Queue                        |:x:                |
 
 
 ## Contributing
