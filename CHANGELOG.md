@@ -1,7 +1,9 @@
 0.0.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+### :notebook: Notes
+
+- Testing release process
 
 
 0.0.9 (unreleased)
