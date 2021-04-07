@@ -6,7 +6,7 @@
 - Add CONTRIBUTING guide
 
 
-0.0.6 (unreleased)
+0.0.6 (2021-04-06)
 ------------------
 
 
