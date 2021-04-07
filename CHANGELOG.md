@@ -1,7 +1,10 @@
 0.0.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+
+### :sparkles: Added
+
+- Added Progress table to README
 
 
 0.0.5 (2021-04-06)
