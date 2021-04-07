@@ -7,6 +7,8 @@ jobs:
     environment: Release
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ZEST_PAT }}
       - name: Set up Python
         uses: actions/setup-python@v2
       - name: Install Zest
@@ -25,10 +27,3 @@ jobs:
         run: release --no-input
       - name: Bump version
         run: postrelease --no-input
-      - name: Submit post-release PR
-        uses: peter-evans/create-pull-request@v3.8.2
-        with:
-          author: ZestReleaser <zestreleaser@outlook.com>
-          committer: ZestReleaser <zestreleaser@outlook.com>
-          branch: release
-          title: Bump version post-release
