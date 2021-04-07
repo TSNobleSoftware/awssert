@@ -1,7 +1,9 @@
 0.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+### :notebook: Notes
+
+- Testing release process
 
 
 0.0.10 (2021-04-07)
