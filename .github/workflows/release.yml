@@ -28,5 +28,7 @@ jobs:
       - name: Submit post-release PR
         uses: peter-evans/create-pull-request@v3.8.2
         with:
+          author: ZestReleaser <zestreleaser@outlook.com>
+          committer: ZestReleaser <zestreleaser@outlook.com>
           branch: release
           title: Bump version post-release
