@@ -11,10 +11,6 @@ jobs:
         uses: actions/setup-python@v2
       - name: Install Zest
         run: pip install zest.releaser[recommended]
-      - name: Set up Git user
-        run: |
-          git config --global user.name "ZestReleaser"
-          git config --global user.email "zestreleaser@outlook.com"
       - name: Create release version
         run: prerelease --no-input
       - name: Tag and release to PyPI
@@ -24,4 +20,10 @@ jobs:
           TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
         run: release --no-input
       - name: Bump version
-        run: postrelease --no-input
+        run: postrelease --push-changes
+      - name: Submit new version PR
+        uses: peter-evans/create-pull-request@v3.8.2
+        with:
+          author: ZestReleaser <zestreleaser@outlook.com>
+          branch: release
+          title: Bump version post-release
