@@ -1,7 +1,9 @@
 0.0.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+### :books: Documentation
+
+- Add CODE OF CONDUCT
 
 
 0.0.7 (2021-04-07)
