@@ -6,7 +6,7 @@
 - Testing release process
 
 
-0.0.9 (unreleased)
+0.0.9 (2021-04-07)
 ------------------
 
 ### :notebook: Notes
