@@ -57,6 +57,7 @@ When making changes, please add a short *human-readable* description of the chan
 
 - Identifed (unresolved) bugs go here
 
+If you are planning to release a new version of AWSsert, don't worry about adding dates or a new version to the changelog. Zest will handle that!
 ## Releasing a new version
 
 AWSsert uses Zest and Github Actions to automate the release process. In order to do so, manually run the Release workflow from the base repository. This will add the current date to the changelog, build and publish artifacts to PyPI, and bump the version number.
