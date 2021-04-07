@@ -9,12 +9,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
-      - name: Install zest
+      - name: Install Zest
         run: pip install zest.releaser[recommended]
       - name: Set up Git user
         run: |
           git config --global user.name "ZestReleaser"
-          git config --global user.email "N/A"
+          git config --global user.email "zestreleaser@outlook.co.uk"
       - name: Create release version
         run: prerelease --no-input
       - name: Tag and release to PyPI
