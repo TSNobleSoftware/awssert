@@ -4,7 +4,7 @@
 - Nothing changed yet.
 
 
-0.0.7 (unreleased)
+0.0.7 (2021-04-07)
 ------------------
 
 ### :books: Documentation
