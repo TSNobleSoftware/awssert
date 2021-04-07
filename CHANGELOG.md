@@ -1,4 +1,10 @@
-0.0.11 (unreleased)
+0.0.12 (unreleased)
+-------------------
+
+- Nothing changed yet.
+
+
+0.0.11 (2021-04-07)
 -------------------
 
 ### :notebook: Notes
