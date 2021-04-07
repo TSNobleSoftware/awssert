@@ -7,14 +7,16 @@
 0.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+### :books: Documentation
+
+- Add CONTRIBUTING guide
 
 
-0.0.6 (unreleased)
+0.0.6 (2021-04-06)
 ------------------
 
 
-### :sparkles: Added
+### :books: Documentation
 
 - Added Progress table to README
 
