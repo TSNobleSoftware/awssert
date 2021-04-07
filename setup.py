@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-version = "0.0.11.dev0"
+version = "0.0.11"
 here = Path(__file__).parent.resolve()
 
 with open(here.joinpath("README.md"), encoding="utf-8") as f:
