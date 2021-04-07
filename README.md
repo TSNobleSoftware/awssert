@@ -142,7 +142,7 @@ Note that AWSsert currently does not work with usage of moto as a decorator
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+A full [contribution guide](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md) are supplied with the repository. In essence, update the unit tests and changelog, and treat fellow users with respect!
 
 ## License
 [Apache Software License 2.0](https://www.apache.org/licenses/LICENSE-2.0)

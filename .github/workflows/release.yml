@@ -14,7 +14,7 @@ jobs:
       - name: Set up Git user
         run: |
           git config --global user.name "ZestReleaser"
-          git config --global user.email "zestreleaser@outlook.co.uk"
+          git config --global user.email "zestreleaser@outlook.com"
       - name: Create release version
         run: prerelease --no-input
       - name: Tag and release to PyPI
