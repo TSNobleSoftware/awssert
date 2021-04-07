@@ -24,7 +24,7 @@ jobs:
           TWINE_REPOSITORY_URL: https://upload.pypi.org/legacy/
         run: release --no-input
       - name: Bump version
-        run: postrelease --push-changes
+        run: postrelease --no-input
       - name: Submit post-release PR
         uses: peter-evans/create-pull-request@v3.8.2
         with:
