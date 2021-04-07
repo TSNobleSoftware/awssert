@@ -33,7 +33,7 @@ black awssert/ test
 
 When making changes, please add a short *human-readable* description of the change to the latest (unreleased) entry in the changelog. Changes should be added under the relevant category:
 
-### :sparkle: Added
+### :sparkles: Added
 
 - New code features go here
 
