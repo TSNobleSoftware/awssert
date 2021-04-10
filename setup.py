@@ -33,6 +33,7 @@ setup(
     install_requires=[
         "pytest",
         "boto3",
+        "mock"
     ],
     entry_points={"pytest11": ["name_of_plugin = awssert"]},
     project_urls={
