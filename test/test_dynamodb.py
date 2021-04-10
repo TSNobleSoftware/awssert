@@ -1,15 +1,9 @@
-import pytest
 import moto
 import boto3
 
 
-@pytest.fixture
-def mock_ddb():
-    with moto.mock_dynamodb2():
-        yield
-
-
-def test_table_empty_assertion(mock_ddb):
+@moto.mock_dynamodb2
+def test_table_empty_assertion():
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
@@ -21,7 +15,8 @@ def test_table_empty_assertion(mock_ddb):
     assert table.should_not_be.empty()
 
 
-def test_table_has_item_assertion(mock_ddb):
+@moto.mock_dynamodb2
+def test_table_has_item_assertion():
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
@@ -37,7 +32,8 @@ def test_table_has_item_assertion(mock_ddb):
     assert table.does_not_have.item({"mock": "bar"})
 
 
-def test_table_has_key_assertion(mock_ddb):
+@moto.mock_dynamodb2
+def test_table_has_key_assertion():
     boto3.client("dynamodb").create_table(
         AttributeDefinitions=[{"AttributeName": "mock", "AttributeType": "S"}],
         TableName="mock",
