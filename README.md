@@ -33,22 +33,15 @@ AWSsert also works in tandem with [moto](https://pypi.org/project/moto/), enabli
 
 ```python
 import boto3
-import moto
-import pytest
+from moto import mock_s3
 
-@pytest.fixture
-def mock_s3():
-   with moto.mock_s3():
-      yield
-
-def test_bucket_contains_object(mock_s3):
+@mock_s3
+def test_mock_bucket_contains_object():
    bucket = boto3.resource("s3").Bucket("foo")
    assert bucket.should_not.contain("bar")
    bucket.put_object(Key="bar", Body=b"123")
    assert bucket.should_contain("bar")
 ```
-
-Note that AWSsert currently does not work with usage of moto as a decorator
 
 ## Progress
 
