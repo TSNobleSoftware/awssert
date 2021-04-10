@@ -1,47 +1,13 @@
 0.0.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+### :pencil2: Changed
 
-
-0.0.12 (2021-04-07)
--------------------
-
-### :notebook: Notes
-
-- Testing release process
-
-
-0.0.11 (2021-04-07)
--------------------
-
-### :notebook: Notes
-
-- Testing release process
-
-
-0.0.10 (2021-04-07)
--------------------
-
-### :notebook: Notes
-
-- Testing release process
-
-
-0.0.9 (2021-04-07)
-------------------
-
-### :notebook: Notes
-
-- Testing release process
-
-
-0.0.8 (2021-04-07)
-------------------
+- Awssert now works with moto decorators
 
 ### :books: Documentation
 
-- Add CODE OF CONDUCT
+- README now shows moto decorator usage
 
 
 0.0.7 (2021-04-07)
@@ -49,7 +15,7 @@
 
 ### :books: Documentation
 
-- Add CONTRIBUTING guide
+- Added CONTRIBUTING guide
 
 
 0.0.6 (2021-04-06)
@@ -70,7 +36,7 @@
 
 ### :books: Documentation
 
-- Update README with pytest plugin usage
+- Updated README with pytest plugin usage
 
 0.0.4 (2021-04-05)
 ------------------
