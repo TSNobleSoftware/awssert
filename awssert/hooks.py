@@ -8,9 +8,7 @@ from awssert.dynamodb import register_dynamodb_assertions
 
 
 def attach_assertions_to_session(session):
-    session.events.register(
-        "creating-resource-class.s3.Bucket", register_s3_assertions
-    )
+    session.events.register("creating-resource-class.s3.Bucket", register_s3_assertions)
     session.events.register(
         "creating-resource-class.dynamodb.Table", register_dynamodb_assertions
     )
