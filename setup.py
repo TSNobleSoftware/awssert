@@ -7,6 +7,9 @@ here = Path(__file__).parent.resolve()
 with open(here.joinpath("README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
+with open(here.joinpath("requirements.txt"), encoding="utf-8") as f:
+    requirements = f.readlines()
+
 setup(
     name="awssert",
     version=version,
@@ -30,11 +33,7 @@ setup(
     keywords=["aws", "python", "pytest", "boto3", "testing"],
     packages=find_packages(),
     python_requires=">=3.5",
-    install_requires=[
-        "pytest",
-        "boto3",
-        "mock"
-    ],
+    install_requires=[requirements],
     entry_points={"pytest11": ["name_of_plugin = awssert"]},
     project_urls={
         "Bug Reports": "https://github.com/TSNobleSoftware/awssert/issues",

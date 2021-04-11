@@ -1,4 +1,3 @@
-# If adding requirements, also add to install_requires in setup.py
-pytest
-boto3
-mock
+pytest<=6.2.3
+boto3<=1.17.49
+mock<=4.0.3
