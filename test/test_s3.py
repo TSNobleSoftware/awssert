@@ -14,7 +14,7 @@ def test_s3_bucket_contains_object_assertion():
 
 
 @moto.mock_s3
-def test_s3_bucket_empty_assertion():
+def test_s3_bucket_is_empty_assertion():
     bucket = boto3.resource("s3").Bucket("mock")
     bucket.create(CreateBucketConfiguration={"LocationConstraint": "eu-west-1"})
     assert bucket.should_be.empty()
