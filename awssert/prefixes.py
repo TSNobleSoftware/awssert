@@ -4,13 +4,25 @@ from awssert.exceptions import PrefixNotSupportedError
 class AssertionPrefixes:
 
     _register = {}
-    positive = ["should", "does", "should_be", "should_have", "has"]
+    positive = [
+        "should",
+        "does",
+        "should_be",
+        "should_have",
+        "has",
+        "belongs_to",
+        "is_part_of",
+        "was",
+    ]
     negative = [
         "should_not",
         "does_not",
         "does_not_have",
         "should_not_be",
         "should_not_have",
+        "is_not_part_of",
+        "does_not_belong_to",
+        "was_not",
     ]
     all = positive + negative
 

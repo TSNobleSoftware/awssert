@@ -5,6 +5,7 @@ import boto3
 
 from awssert.s3 import register_s3_assertions
 from awssert.dynamodb import register_dynamodb_assertions
+from awssert.iam import register_iam_assertions
 
 
 def attach_assertions_to_session(session):
@@ -12,6 +13,7 @@ def attach_assertions_to_session(session):
     session.events.register(
         "creating-resource-class.dynamodb.Table", register_dynamodb_assertions
     )
+    session.events.register("creating-resource-class.iam.User", register_iam_assertions)
 
 
 def resource_with_assertions(*args, **kwargs):

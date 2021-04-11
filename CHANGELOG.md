@@ -1,7 +1,9 @@
 0.0.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+### :sparkles: Added
+
+- Added IAM User assertions: `has.name`, `was.created_at`, `belongs_to.group`
 
 
 0.0.13 (2021-04-10)
