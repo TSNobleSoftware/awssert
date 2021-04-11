@@ -100,7 +100,7 @@ def test_mock_bucket_contains_object():
 |             |SamlProvider                 |:x:                |
 |             |ServerCertificate            |:x:                |
 |             |SigningCertificate           |:x:                |
-|             |User                         |:x:                |
+|             |User                         |:white_check_mark: |
 |             |UserPolicy                   |:x:                |
 |             |VirtualMfaDevice             |:x:                |
 |OpsWorks     |Layer                        |:x:                |
