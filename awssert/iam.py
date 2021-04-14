@@ -34,10 +34,6 @@ class PolicyAssertions:
         return name == policy.policy_name
 
     @prefixes(["has", "does_not_have"])
-    def id(self, policy, id):
-        return id == policy.policy_id
-
-    @prefixes(["has", "does_not_have"])
     def description(self, policy, description):
         return description == policy.description
 
