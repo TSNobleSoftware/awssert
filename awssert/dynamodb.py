@@ -1,5 +1,4 @@
-from awssert.prefixes import prefixes, AssertionPrefixes
-from awssert.core import AssertionPrefixRouter, BotoObjectProxyRegister, BotoObjectProxy
+from awssert.prefixes import prefixes
 
 
 class TableAssertions:
