@@ -93,7 +93,7 @@ def test_mock_bucket_contains_object():
 |             |InstanceProfile              |:x:                |
 |             |LoginProfile                 |:x:                |
 |             |MfaDevice                    |:x:                |
-|             |Policy                       |:x:                |
+|             |Policy                       |:white_check_mark: |
 |             |PolicyVersion                |:x:                |
 |             |Role                         |:x:                |
 |             |RolePolicy                   |:x:                |

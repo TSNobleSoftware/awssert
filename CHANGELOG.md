@@ -4,6 +4,7 @@
 ### :sparkles: Added
 
 - Added IAM User assertions: `has.name`, `was.created_at`, `belongs_to.group`
+- Added IAM Role assertions: `has.name`, `has.description`, `was.created_at`, `was.last_updated_at`, `should_be.attached_to`
 
 
 0.0.13 (2021-04-10)
