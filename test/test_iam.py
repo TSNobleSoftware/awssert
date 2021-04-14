@@ -153,3 +153,38 @@ def test_iam_policy_should_be_attached_to_assertion_with_multiple(
     assert policy.should_be.attached_to(good_group, good_user, good_role)
     bad_user = boto3.resource("iam").User("bad").create()
     assert policy.should_not_be.attached_to(good_group, bad_user, good_role)
+
+
+@moto.mock_iam
+def test_iam_group_has_name_assertion():
+    group = boto3.resource("iam").Group("foo")
+    assert group.has.name("foo")
+    assert group.does_not_have.name("bar")
+
+
+@freezegun.freeze_time("01/02/2021 10:00:00+00:00")
+@moto.mock_iam
+def test_iam_group_was_created_at_assertion():
+    group = boto3.resource("iam").Group("foo").create()
+    assert group.was.created_at("01/02/2021 10:00:00+00:00")
+    assert group.was_not.created_at("02/02/2021 10:00:00+00:00")
+    assert group.was_not.created_at("01/02/2021 10:00:01+00:00")
+
+
+@moto.mock_iam
+def test_iam_group_should_contain_assertion():
+    group = boto3.resource("iam").Group("foo").create()
+    user = boto3.resource("iam").User("bar").create()
+    assert group.should_not.contain(user)
+    group.add_user(UserName=user.name)
+    assert group.should.contain(user)
+
+
+@moto.mock_iam
+def test_iam_group_has_policy_assertion(generate_policy):
+    group = boto3.resource("iam").Group("foo").create()
+    policy_arn = generate_policy("bar")
+    policy = boto3.resource("iam").Policy(policy_arn)
+    assert group.does_not_have.policy(policy)
+    policy.attach_group(GroupName=group.name)
+    assert group.has.policy(policy)
