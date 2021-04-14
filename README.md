@@ -26,7 +26,7 @@ def test_bucket_contains_object():
    bucket = boto3.resource("s3").Bucket("foo")
    assert bucket.should_not.contain("bar")
    bucket.put_object(Key="bar", Body=b"123")
-   assert bucket.should_contain("bar")
+   assert bucket.should.contain("bar")
 ```
 
 AWSsert also works in tandem with [moto](https://pypi.org/project/moto/), enabling the same level of clarity to be applied on mock infrastructure:
@@ -40,7 +40,7 @@ def test_mock_bucket_contains_object():
    bucket = boto3.resource("s3").Bucket("foo")
    assert bucket.should_not.contain("bar")
    bucket.put_object(Key="bar", Body=b"123")
-   assert bucket.should_contain("bar")
+   assert bucket.should.contain("bar")
 ```
 
 ## Progress
