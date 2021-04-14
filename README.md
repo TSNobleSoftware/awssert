@@ -88,7 +88,7 @@ def test_mock_bucket_contains_object():
 |             |AccountSummary               |:x:                |
 |             |AssumeRolePolicy             |:x:                |
 |             |CurrentUser                  |:x:                |
-|             |Group                        |:x:                |
+|             |Group                        |:white_check_mark: |
 |             |GroupPolicy                  |:x:                |
 |             |InstanceProfile              |:x:                |
 |             |LoginProfile                 |:x:                |
