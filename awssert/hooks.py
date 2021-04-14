@@ -21,7 +21,7 @@ ASSERTIONS = [
     TableAssertions(),
     UserAssertions(),
     PolicyAssertions(),
-    GroupAssertions()
+    GroupAssertions(),
 ]
 
 

@@ -188,4 +188,3 @@ def test_iam_group_has_policy_assertion(generate_policy):
     assert group.does_not_have.policy(policy)
     policy.attach_group(GroupName=group.name)
     assert group.has.policy(policy)
-
