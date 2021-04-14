@@ -12,14 +12,15 @@ def generate_policy():
         description = description or "Nothing"
         document = {
             "Version": "2012-10-17",
-            "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}]
+            "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}],
         }
         response = boto3.client("iam").create_policy(
             PolicyName=name,
             PolicyDocument=json.dumps(document),
-            Description=description
+            Description=description,
         )
         return response["Policy"]["Arn"]
+
     return generate
 
 
@@ -28,11 +29,12 @@ def generate_role():
     def generate(name):
         document = {
             "Version": "2012-10-17",
-            "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}]
+            "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}],
         }
         boto3.client("iam").create_role(
             RoleName=name, AssumeRolePolicyDocument=json.dumps(document)
         )
+
     return generate
 
 
@@ -111,7 +113,7 @@ def test_iam_policy_should_be_attached_to_assertion_with_user(generate_policy):
 
 @moto.mock_iam
 def test_iam_policy_should_be_attached_to_assertion_with_role(
-        generate_policy, generate_role
+    generate_policy, generate_role
 ):
     policy_arn = generate_policy("foo")
     policy = boto3.resource("iam").Policy(policy_arn)
@@ -137,7 +139,7 @@ def test_iam_policy_should_be_attached_to_assertion_with_group(generate_policy):
 
 @moto.mock_iam
 def test_iam_policy_should_be_attached_to_assertion_with_multiple(
-        generate_policy, generate_role
+    generate_policy, generate_role
 ):
     policy_arn = generate_policy("foo")
     policy = boto3.resource("iam").Policy(policy_arn)

@@ -8,7 +8,7 @@ from awssert.core import (
     BotoObjectProxy,
     BotoObjectProxyRegister,
     AssertionPrefixRouter,
-    AssertionPrefixes
+    AssertionPrefixes,
 )
 
 from awssert.s3 import BucketAssertions
@@ -20,7 +20,7 @@ ASSERTIONS = [
     BucketAssertions(),
     TableAssertions(),
     UserAssertions(),
-    PolicyAssertions()
+    PolicyAssertions(),
 ]
 
 
@@ -30,13 +30,12 @@ def attach_assertions_to_session(session, assertions):
         base_classes.insert(0, BotoObjectProxyRegister)
         class_attributes["proxy"] = proxy
         for prefix in AssertionPrefixes.all:
-            class_attributes[prefix] = AssertionPrefixRouter(
-                prefix, assertion, proxy
-            )
+            class_attributes[prefix] = AssertionPrefixRouter(prefix, assertion, proxy)
+
     for assertion in assertions:
         session.events.register(
             f"creating-resource-class.{assertion.attaches_to}",
-            partial(register, assertion)
+            partial(register, assertion),
         )
 
 
