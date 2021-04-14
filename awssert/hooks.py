@@ -1,24 +1,47 @@
-import mock
+from functools import partial
 
+import mock
 import pytest
 import boto3
 
-from awssert.s3 import register_s3_assertions
-from awssert.dynamodb import register_dynamodb_assertions
-from awssert.iam import register_iam_assertions
+from awssert.core import (
+    BotoObjectProxy,
+    BotoObjectProxyRegister,
+    AssertionPrefixRouter,
+    AssertionPrefixes,
+)
+
+from awssert.s3 import BucketAssertions
+from awssert.dynamodb import TableAssertions
+from awssert.iam import UserAssertions, PolicyAssertions
 
 
-def attach_assertions_to_session(session):
-    session.events.register("creating-resource-class.s3.Bucket", register_s3_assertions)
-    session.events.register(
-        "creating-resource-class.dynamodb.Table", register_dynamodb_assertions
-    )
-    session.events.register("creating-resource-class.iam.User", register_iam_assertions)
+ASSERTIONS = [
+    BucketAssertions(),
+    TableAssertions(),
+    UserAssertions(),
+    PolicyAssertions(),
+]
+
+
+def attach_assertions_to_session(session, assertions):
+    def register(assertion, class_attributes, base_classes, **kwargs):
+        proxy = BotoObjectProxy()
+        base_classes.insert(0, BotoObjectProxyRegister)
+        class_attributes["proxy"] = proxy
+        for prefix in AssertionPrefixes.all:
+            class_attributes[prefix] = AssertionPrefixRouter(prefix, assertion, proxy)
+
+    for assertion in assertions:
+        session.events.register(
+            f"creating-resource-class.{assertion.attaches_to}",
+            partial(register, assertion),
+        )
 
 
 def resource_with_assertions(*args, **kwargs):
     session = boto3.Session()
-    attach_assertions_to_session(session)
+    attach_assertions_to_session(session, ASSERTIONS)
     return session.resource(*args, **kwargs)
 
 
