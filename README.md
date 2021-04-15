@@ -95,7 +95,7 @@ def test_mock_bucket_contains_object():
 |             |MfaDevice                    |:x:                |
 |             |Policy                       |:white_check_mark: |
 |             |PolicyVersion                |:x:                |
-|             |Role                         |:x:                |
+|             |Role                         |:white_check_mark: |
 |             |RolePolicy                   |:x:                |
 |             |SamlProvider                 |:x:                |
 |             |ServerCertificate            |:x:                |
