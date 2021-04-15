@@ -7,6 +7,9 @@
 - Added IAM Role assertions: `has.name`, `has.description`, `was.created_at`, `was.last_updated_at`, `should_be.attached_to`
 - Added IAM Group assertions: `has.name`, `was.created_at`, `should.contain`, `has.policy`
 
+### :pencil2: Changed
+- `s3.Bucket.should.contain()` now accepts `s3.Object` as an alternative to a `str` key
+
 
 0.0.13 (2021-04-10)
 -------------------
