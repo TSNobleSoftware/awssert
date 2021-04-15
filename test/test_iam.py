@@ -35,7 +35,7 @@ def generate_role():
         response = boto3.client("iam").create_role(
             RoleName=name,
             AssumeRolePolicyDocument=json.dumps(document),
-            Description=description
+            Description=description,
         )
         return response["Role"]["Arn"]
 
