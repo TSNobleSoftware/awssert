@@ -12,7 +12,12 @@ from awssert.core import (
 from awssert.prefixes import AssertionPrefixes
 from awssert.s3 import BucketAssertions
 from awssert.dynamodb import TableAssertions
-from awssert.iam import UserAssertions, PolicyAssertions, GroupAssertions
+from awssert.iam import (
+    UserAssertions,
+    PolicyAssertions,
+    GroupAssertions,
+    RoleAssertions,
+)
 
 
 ASSERTIONS = [
@@ -21,6 +26,7 @@ ASSERTIONS = [
     UserAssertions(),
     PolicyAssertions(),
     GroupAssertions(),
+    RoleAssertions(),
 ]
 
 
