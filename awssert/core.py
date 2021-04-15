@@ -40,7 +40,11 @@ class AssertionPrefixRouter:
             result = getattr(self.route_to, method)(
                 self.proxy.reference, *args, **kwargs
             )
-            return result if self.prefix in AssertionPrefixes.positive else not result
+            return (
+                result
+                if self.prefix in AssertionPrefixes.get_positives(type(self.route_to))
+                else not result
+            )
         else:
             raise DisallowedPrefixOnMethodError(
                 f"Method '{method}' cannot be used with prefix '{self.prefix}'"
