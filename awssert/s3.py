@@ -7,9 +7,10 @@ class BucketAssertions:
 
     @positives("should", "does")
     @negatives("should_not", "does_not")
-    def contain(self, bucket, key):
+    def contain(self, bucket, object):
+        key = object if isinstance(object, str) else object.key
         objects = bucket.objects.filter(Prefix=key)
-        return any([key == object.key for object in objects])
+        return any([key == obj.key for obj in objects])
 
     @positives("should_be")
     @negatives("should_not_be")
