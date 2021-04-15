@@ -26,14 +26,18 @@ def generate_policy():
 
 @pytest.fixture
 def generate_role():
-    def generate(name):
+    def generate(name, description=None):
+        description = description or "Nothing"
         document = {
             "Version": "2012-10-17",
             "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}],
         }
-        boto3.client("iam").create_role(
-            RoleName=name, AssumeRolePolicyDocument=json.dumps(document)
+        response = boto3.client("iam").create_role(
+            RoleName=name,
+            AssumeRolePolicyDocument=json.dumps(document),
+            Description=description
         )
+        return response["Role"]["Arn"]
 
     return generate
 
@@ -188,3 +192,43 @@ def test_iam_group_has_policy_assertion(generate_policy):
     assert group.does_not_have.policy(policy)
     policy.attach_group(GroupName=group.name)
     assert group.has.policy(policy)
+
+
+@moto.mock_iam
+def test_iam_role_has_name_assertion(generate_role):
+    generate_role("foo")
+    role = boto3.resource("iam").Role("foo")
+    assert role.has.name("foo")
+    assert role.does_not_have.name("bar")
+
+
+@moto.mock_iam
+def test_iam_role_has_description_assertion(generate_role):
+    generate_role("foo", description="description")
+    role = boto3.resource("iam").Role("foo")
+    assert role.has.description("description")
+    assert role.does_not_have.description("not the description")
+
+
+@freezegun.freeze_time("01/02/2021 10:00:00+00:00")
+@moto.mock_iam
+def test_iam_role_was_created_at_assertion(generate_role):
+    generate_role("foo")
+    role = boto3.resource("iam").Role("foo")
+    assert role.was.created_at("01/02/2021 10:00:00+00:00")
+    assert role.was_not.created_at("02/02/2021 10:00:00+00:00")
+    assert role.was_not.created_at("01/02/2021 10:00:01+00:00")
+
+
+@moto.mock_iam
+def test_iam_role_has_policy_assertion(generate_policy, generate_role):
+    policy_arn = generate_policy("good")
+    good_policy = boto3.resource("iam").Policy(policy_arn)
+    generate_role("foo")
+    role = boto3.resource("iam").Role("foo")
+    role.attach_policy(PolicyArn=good_policy.arn)
+    assert role.has.policy(good_policy)
+    assert role.uses.policy(good_policy)
+    bad_policy = boto3.resource("iam").Policy("bad")
+    assert role.does_not_have.policy(bad_policy)
+    assert role.does_not_use.policy(bad_policy)

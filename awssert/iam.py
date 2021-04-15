@@ -91,3 +91,37 @@ class GroupAssertions:
     @negatives("does_not_have")
     def policy(self, group, policy):
         return policy in group.attached_policies.all()
+
+
+class RoleAssertions:
+
+    attaches_to = "iam.Role"
+
+    @positives("has")
+    @negatives("does_not_have")
+    def name(self, role, name):
+        return name == role.name
+
+    @positives("has")
+    @negatives("does_not_have")
+    def description(self, role, description):
+        return description == role.description
+
+    @positives("was")
+    @negatives("was_not")
+    def created_at(self, role, date):
+        if not isinstance(date, datetime):
+            date = dateutil.parser.parse(date)
+        return date == role.create_date
+
+    @positives("was")
+    @negatives("was_not")
+    def last_used_on(self, role, date):
+        if not isinstance(date, datetime):
+            date = dateutil.parser.parse(date)
+        return date == role.role_last_used
+
+    @positives("has", "uses")
+    @negatives("does_not_have", "does_not_use")
+    def policy(self, role, policy):
+        return policy in role.attached_policies.all()
