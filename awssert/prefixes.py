@@ -48,7 +48,7 @@ class AssertionPrefixes:
         register[class_name][keyword][method.__name__] = method
 
 
-def positives(allowed_prefixes):
+def positives(*allowed_prefixes):
     def registrar(method):
         AssertionPrefixes.register_positives(method, allowed_prefixes)
         return method
@@ -56,7 +56,7 @@ def positives(allowed_prefixes):
     return registrar
 
 
-def negatives(allowed_prefixes):
+def negatives(*allowed_prefixes):
     def registrar(method):
         AssertionPrefixes.register_negatives(method, allowed_prefixes)
         return method
