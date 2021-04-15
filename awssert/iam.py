@@ -56,3 +56,26 @@ class PolicyAssertions:
             "iam.User": policy.attached_users.all(),
         }
         return all([entity in attached[type(entity).__name__] for entity in entities])
+
+
+class GroupAssertions:
+
+    attaches_to = "iam.Group"
+
+    @prefixes(["has", "does_not_have"])
+    def name(self, group, name):
+        return name == group.group_name
+
+    @prefixes(["was", "was_not"])
+    def created_at(self, group, date):
+        if not isinstance(date, datetime):
+            date = dateutil.parser.parse(date)
+        return date == group.create_date
+
+    @prefixes(["should", "should_not"])
+    def contain(self, group, user):
+        return user in group.users.all()
+
+    @prefixes(["has", "does_not_have"])
+    def policy(self, group, policy):
+        return policy in group.attached_policies.all()
