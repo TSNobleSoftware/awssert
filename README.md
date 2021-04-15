@@ -17,7 +17,7 @@ pip install awssert
 
 ## Usage
 
-AWSsert attaches assertions directly to [boto3](https://github.com/boto/boto3) resource objects, allowing you to write clean and declarative tests:
+Installing the package will make AWSserts extra assertions available to all of your tests. Assertions are attached directly to [boto3](https://github.com/boto/boto3) resource objects, allowing you to write clean and declarative tests:
 
 ```python
 import boto3
