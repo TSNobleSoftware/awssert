@@ -8,9 +8,8 @@ from awssert.core import (
     BotoObjectProxy,
     BotoObjectProxyRegister,
     AssertionPrefixRouter,
-    AssertionPrefixes,
 )
-
+from awssert.prefixes import AssertionPrefixes
 from awssert.s3 import BucketAssertions
 from awssert.dynamodb import TableAssertions
 from awssert.iam import UserAssertions, PolicyAssertions, GroupAssertions
@@ -30,7 +29,7 @@ def attach_assertions_to_session(session, assertions):
         proxy = BotoObjectProxy()
         base_classes.insert(0, BotoObjectProxyRegister)
         class_attributes["proxy"] = proxy
-        for prefix in AssertionPrefixes.all:
+        for prefix in AssertionPrefixes.get_prefixes(type(assertion)):
             class_attributes[prefix] = AssertionPrefixRouter(prefix, assertion, proxy)
 
     for assertion in assertions:
