@@ -37,7 +37,6 @@
 0.0.6 (2021-04-06)
 ------------------
 
-
 ### :books: Documentation
 
 - Added Progress table to README
@@ -53,6 +52,7 @@
 ### :books: Documentation
 
 - Updated README with pytest plugin usage
+
 
 0.0.4 (2021-04-05)
 ------------------
