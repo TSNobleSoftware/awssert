@@ -11,6 +11,7 @@
 ### :pencil2: Changed
 
 - `s3.Bucket.should.contain()` now accepts `s3.Object` as an alternative to a `str` key
+- assertions now `assert` themselves rather than returning a `bool`
 
 
 0.0.13 (2021-04-10)
