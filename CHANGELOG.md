@@ -11,7 +11,8 @@
 ### :pencil2: Changed
 
 - `s3.Bucket.should.contain()` now accepts `s3.Object` as an alternative to a `str` key
-
+- assertions now `assert` themselves rather than returning a `bool`
+- Added better `AssertionError` messages
 
 0.0.13 (2021-04-10)
 -------------------
@@ -36,7 +37,6 @@
 0.0.6 (2021-04-06)
 ------------------
 
-
 ### :books: Documentation
 
 - Added Progress table to README
@@ -52,6 +52,7 @@
 ### :books: Documentation
 
 - Updated README with pytest plugin usage
+
 
 0.0.4 (2021-04-05)
 ------------------

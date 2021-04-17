@@ -36,16 +36,20 @@ class AssertionPrefixRouter:
         return routable_methods.keys()
 
     def _route(self, method, *args, **kwargs):
-        if method in self.routable_methods:
-            result = getattr(self.route_to, method)(
-                self.proxy.reference, *args, **kwargs
-            )
-            return (
-                result
-                if self.prefix in AssertionPrefixes.get_positives(type(self.route_to))
-                else not result
-            )
-        else:
+        if method not in self.routable_methods:
             raise DisallowedPrefixOnMethodError(
                 f"Method '{method}' cannot be used with prefix '{self.prefix}'"
             )
+        result = getattr(self.route_to, method)(self.proxy.reference, *args, **kwargs)
+        result_matches_prefix = (self._is_prefix_positive() and result) or not (
+            self._is_prefix_positive() or result
+        )
+        if not result_matches_prefix:
+            f_args = [str(arg) for arg in args]
+            f_kwargs = [f"{k}={str(v)}" for k, v in kwargs.items()]
+            f_params = ", ".join(f_args + f_kwargs)
+            f_assertion = f"{self.proxy.reference}.{self.prefix}.{method}({f_params})"
+            raise AssertionError(f"Assertion {f_assertion} was False")
+
+    def _is_prefix_positive(self):
+        return self.prefix in AssertionPrefixes.get_positives(type(self.route_to))
