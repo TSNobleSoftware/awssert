@@ -49,7 +49,9 @@ class AssertionPrefixRouter:
             raise DisallowedPrefixOnMethodError(
                 f"Method '{method}' cannot be used with prefix '{self.prefix}'"
             )
-        result = getattr(self.route_to, method)(self.proxy.reference, self.context, *args, **kwargs)
+        result = getattr(self.route_to, method)(
+            self.proxy.reference, self.context, *args, **kwargs
+        )
         if isinstance(result, _GeneratorContextManager):
             return self._context_manager_wrapper(result, method, *args, **kwargs)
         self._process_prefix(self.context["result"], method, *args, **kwargs)
