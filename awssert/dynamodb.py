@@ -7,16 +7,16 @@ class TableAssertions:
 
     @positives("should_be")
     @negatives("should_not_be")
-    def empty(self, table):
-        return table.item_count == 0
+    def empty(self, table, context):
+        context["result"] = table.item_count == 0
 
     @positives("should_have", "has")
     @negatives("should_not_have", "does_not_have")
-    def item(self, table, key):
-        return "Item" in table.get_item(Key=key)
+    def item(self, table, context, key):
+        context["result"] = "Item" in table.get_item(Key=key)
 
     @positives("should_have", "has")
     @negatives("should_not_have", "does_not_have")
-    def key(self, table, key):
+    def key(self, table, context, key):
         keys = [key["AttributeName"] for key in table.key_schema]
-        return key in keys
+        context["result"] = key in keys

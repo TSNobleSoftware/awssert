@@ -1,3 +1,4 @@
+from contextlib import _GeneratorContextManager, contextmanager
 import functools
 
 from awssert.prefixes import AssertionPrefixes
@@ -20,6 +21,7 @@ class AssertionPrefixRouter:
         self.prefix = prefix
         self.route_to = assertions_class
         self.proxy = proxy
+        self.context = {}
         self.routable_methods = self._setup_routable_methods()
 
     def _setup_routable_methods(self):
@@ -35,12 +37,24 @@ class AssertionPrefixRouter:
             self.__setattr__(method, functools.partial(self._route, method))
         return routable_methods.keys()
 
+    @contextmanager
+    def _context_manager_wrapper(self, manager, method, *args, **kwargs):
+        with manager:
+            yield
+        result = self.context["result"]
+        self._process_prefix(result, method, args, kwargs)
+
     def _route(self, method, *args, **kwargs):
         if method not in self.routable_methods:
             raise DisallowedPrefixOnMethodError(
                 f"Method '{method}' cannot be used with prefix '{self.prefix}'"
             )
-        result = getattr(self.route_to, method)(self.proxy.reference, *args, **kwargs)
+        result = getattr(self.route_to, method)(self.proxy.reference, self.context, *args, **kwargs)
+        if isinstance(result, _GeneratorContextManager):
+            return self._context_manager_wrapper(result, method, *args, **kwargs)
+        self._process_prefix(self.context["result"], method, *args, **kwargs)
+
+    def _process_prefix(self, result, method, *args, **kwargs):
         result_matches_prefix = (self._is_prefix_positive() and result) or not (
             self._is_prefix_positive() or result
         )

@@ -18,7 +18,7 @@ from awssert.iam import (
     GroupAssertions,
     RoleAssertions,
 )
-
+from awssert.sns import TopicAssertions
 
 ASSERTIONS = [
     BucketAssertions(),
@@ -27,6 +27,7 @@ ASSERTIONS = [
     PolicyAssertions(),
     GroupAssertions(),
     RoleAssertions(),
+    TopicAssertions(),
 ]
 
 

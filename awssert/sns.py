@@ -25,8 +25,6 @@ class TopicAssertions:
         attributes = sqs.get_queue_attributes(QueueUrl=url, AttributeNames=["QueueArn"])
         queue_arn = attributes["Attributes"]["QueueArn"]
         subscription = topic.subscribe(Protocol="sqs", Endpoint=queue_arn)
-        context["result"] = None
-        print(context)
         yield
         messages = sqs.receive_message(QueueUrl=url)["Messages"]
         context["result"] = message == json.loads(messages[0]["Body"])["Message"]
@@ -34,4 +32,3 @@ class TopicAssertions:
         sqs.delete_queue(QueueUrl=url)
         if is_topic_mocked:
             mock_sqs.stop()
-        return
