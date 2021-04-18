@@ -127,7 +127,7 @@ def test_mock_bucket_contains_object():
 |SNS          |PlatformApplication          |:x:                |
 |             |PlatformEndpoint             |:x:                |
 |             |Subscription                 |:x:                |
-|             |Topic                        |:x:                |
+|             |Topic                        |:white_check_mark: |
 |SQS          |Message                      |:x:                |
 |             |Queue                        |:x:                |
 
