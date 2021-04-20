@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-version = "0.0.14.dev0"
+version = "1.0.0.dev0"
 here = Path(__file__).parent.resolve()
 
 with open(here.joinpath("README.md"), encoding="utf-8") as f:
@@ -20,7 +20,7 @@ setup(
     author="Tom Noble",
     author_email="t.s.noble@outlook.com",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Framework :: AWS CDK",
@@ -32,7 +32,7 @@ setup(
     ],
     keywords=["aws", "python", "pytest", "boto3", "testing"],
     packages=find_packages(),
-    python_requires=">=3.5",
+    python_requires=">=3.6",
     install_requires=[requirements],
     entry_points={"pytest11": ["name_of_plugin = awssert"]},
     project_urls={
