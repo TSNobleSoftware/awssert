@@ -8,7 +8,6 @@ from awssert.exceptions import DisallowedPrefixOnMethodError
 
 
 class MockClass:
-
     def __init__(self):
         self.foo_was_called = False
 
@@ -29,4 +28,4 @@ def test_assertion_prefix_router_calls_method_with_allowed_prefix():
 def test_assertion_prefix_router_throws_error_with_disallowed_prefix():
     router = AssertionPrefixRouter("not_real", MockClass(), BotoObjectProxy())
     with pytest.raises(DisallowedPrefixOnMethodError):
-       router.foo()
+        router.foo()
