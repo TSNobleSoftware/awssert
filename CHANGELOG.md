@@ -1,5 +1,5 @@
-0.0.14 (unreleased)
--------------------
+1.0.0 (unreleased)
+===================
 
 ### :sparkles: Added
 
@@ -12,7 +12,7 @@
 ### :pencil2: Changed
 
 - `s3.Bucket.should.contain()` now accepts `s3.Object` as an alternative to a `str` key
-- assertions now `assert` themselves rather than returning a `bool`
+- Assertions now `assert` themselves rather than returning a `bool`
 - Added better `AssertionError` messages
 
 
